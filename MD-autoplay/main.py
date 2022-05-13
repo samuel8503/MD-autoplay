@@ -7,14 +7,15 @@ TEMPLATE_WIDTH = 2560
 TEMPLATE_HEIGHT = 1440
 NEXT_STEP_DURATION = 2
 RETRY_DURATION = 2
-DETECT_RETRY = 3
+DETECT_RETRY = 5
 WAIT_TURN_DURATION = 10
 CONFIDENCE = 0.9
-TARGET_IMAGE_PATH = "target_image"
+TARGET_IMAGE_PATH = os.path.join("MD-autoplay", "target_image")
 
 def click(target):
     while ag.position() != target:
-        ag.click(x=target[0], y=target[1])
+        ag.moveTo(x=target[0], y=target[1])
+    ag.click()
 
 def detect_and_click(target_image):
     target = ag.locateCenterOnScreen(os.path.join(TARGET_IMAGE_PATH, target_image), confidence=CONFIDENCE)
@@ -40,11 +41,9 @@ def drop_card():
     if not target:
         print("INFO: No card to drop.")
     else:
-        while ag.position() != target:
-            ag.moveTo(x=target[0], y=target[1])
         click((target[0], target[1] + 250 / TEMPLATE_HEIGHT * HEIGHT))
         time.sleep(NEXT_STEP_DURATION)
-        click((target[0], target[1] + 200 / TEMPLATE_HEIGHT * HEIGHT))
+        click((target[0], target[1] + 450 / TEMPLATE_HEIGHT * HEIGHT))
 
 def detect_duel_status():
     target = ag.locateCenterOnScreen(os.path.join(TARGET_IMAGE_PATH, "detect_lose.jpg"), confidence=CONFIDENCE)
@@ -59,6 +58,9 @@ def detect_duel_status():
     target = ag.locateCenterOnScreen(os.path.join(TARGET_IMAGE_PATH, "opponent_turn.jpg"), confidence=CONFIDENCE)
     if target:
         return "opponent"
+    target = ag.locateCenterOnScreen(os.path.join(TARGET_IMAGE_PATH, "detect_server_error.jpg"), confidence=CONFIDENCE)
+    if target:
+        return "error"
 
 def play():
     try:
@@ -84,6 +86,9 @@ def play():
                 if target:
                     detect_and_click("level_up.jpg")
                 detect_and_click("duel.jpg")
+            elif status == "error":
+                detect_and_click("server_error.jpg")
+                detect_and_click("duel.jpg")
             else:
                 print("Warning: Duel status detect fail, try again after {0} seconds...".format(RETRY_DURATION))
             time.sleep(RETRY_DURATION)
@@ -91,7 +96,7 @@ def play():
         print("INFO: User terminated")
 
 if __name__ == '__main__':
-    # input("Warning: Please make sure your MD is on main monitor\nPress enter to continue...")
+    input("Warning: Please make sure your MD is on main monitor\nPress enter to continue...")
     print("INFO: Monitor size: {0}, {1}".format(WIDTH, HEIGHT))
     target = detect_with_retry("duel.jpg")
     if not target:

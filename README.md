@@ -8,7 +8,7 @@
   * opencv >= 4.5.5.64
 ## Usage
 ```bash
-python main.py
+python MD-autoplay/main.py
 ```
 ## Limitations
 * Your MD application should put under main monitor.
@@ -44,5 +44,9 @@ python main.py
       * ![image](https://user-images.githubusercontent.com/12276433/168255207-2dd0e4b2-4409-4154-849f-ce8e3fa0eb65.png)
     * `select_phase`'s End phase icon -> `select_phase`
       * ![image](https://user-images.githubusercontent.com/12276433/168255334-96f182d3-1822-45ef-80c5-65c9c3c19063.png)
+    * `server_error`'s Error message title -> `detect_server_error`
+      * ![image](https://user-images.githubusercontent.com/12276433/168343161-59c904fd-6455-4f9f-8bae-e24a06f36c16.png)
+    * `server_error`'s OK -> `server_error`
+      * ![image](https://user-images.githubusercontent.com/12276433/168343540-0bca7f66-e893-4d6c-a08c-9453454c774e.png)
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
