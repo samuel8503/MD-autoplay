@@ -12,6 +12,7 @@ python main.py
 ```
 ## Limitations
 * Your MD application should put under main monitor.
+* It's recommanded that your deck should contains only normal monsters.
 * Now this can only play under 2560\*1440 resolution (main monitor).
   * If you want to play under other resolutions, the workaround is to replace the screenshots under `target_image` folder.
 * How to replace the screenshots under `target_image` folder?
