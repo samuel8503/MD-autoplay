@@ -80,7 +80,9 @@ def play():
             elif status == "lose":
                 detect_and_click("lose.jpg")
                 detect_and_click("battle_pass.jpg")
-                detect_and_click("madel_gain.jpg")
+                target = detect_with_retry("madel_gain.jpg")
+                if target:
+                    detect_and_click("madel_gain.jpg")
                 detect_and_click("duel_result.jpg")
                 target = detect_with_retry("detect_level_up.jpg")
                 if target:
