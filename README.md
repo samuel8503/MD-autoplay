@@ -48,5 +48,9 @@ python MD-autoplay/main.py
       * ![image](https://user-images.githubusercontent.com/12276433/168343161-59c904fd-6455-4f9f-8bae-e24a06f36c16.png)
     * `server_error`'s OK -> `server_error`
       * ![image](https://user-images.githubusercontent.com/12276433/168343540-0bca7f66-e893-4d6c-a08c-9453454c774e.png)
+    * `continue_main`'s Message title -> `detect_continue_main`
+      * ![image](https://user-images.githubusercontent.com/12276433/168443421-9403acf3-8f6b-414d-a7bd-034ed29c38ce.png)
+    * `continue_main`'s No -> `continue_main`
+      * ![image](https://user-images.githubusercontent.com/12276433/168443433-48c07bc5-8980-401e-b1c0-24432a5398c1.png)
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
